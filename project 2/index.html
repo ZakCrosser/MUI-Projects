@@ -1,0 +1,275 @@
+<!doctype html>  
+<html lang="en">
+<head>
+
+	<meta charset="utf-8"/>
+	
+	<title>Check Book A</title>
+	
+	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+	<meta name="HandheldFriendly" content="True"/>
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<!-- Mobile IE needs ClearType for smoothing fonts -->
+	<meta http-equiv="cleartype" content="on"/>
+	<!-- StyleSheets under here -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="css/style.css"/>
+	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
+	<script src="js/libs/modernizr.custom.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script src="js/json.js" type="text/javascript" charset="utf-8"></script>
+	
+</head>
+<body>
+	<div data-role="page" id="home">
+		<!-- Header tag -->		
+		<div data-role="header" date-position="fixed" data-theme="b" data-id="pgs">
+			<h1>Check Book</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
+					<li><a href="#addTransaction" data-icon="plus">Add New</a></li>
+					<li><a href="app_b.html" data-icon="arrow-r">View B</a></li>
+				</ul>
+			</div>							
+		</div>	
+		<!-- content container -->
+		<div data-role="content">
+			<table width="100%" height="100%">
+			<tr>
+			<td style="text-align: center; vertical-align: middle;">
+			<img src="img/register.jpeg" width="280" height="200" alt="CHECKBOOK" align="middle"/>
+			</td>
+			</tr>
+			</table>
+		
+			<!-- Description of App -->	
+			<p>Check Book is an app help to keep organization of your day to day transactions. </p>
+		
+			<!-- Call to Action -->
+			<h2 align="center">
+			<a href="add_Item.html" id="cta">Get Started Now</a></h2>
+		
+			<!-- add transaction button -->
+			<p><a href="#addTransaction" data-role="button" data-theme="a" data-icon="plus" data-iconpos="right">Add Transaction</a></p>
+		
+			<!--Search Bar -->
+			<label for="search-basic">Search Transactions:</label>
+			<input type="search" name="search" id="searc-basic" value="" />
+			</br>
+			<!--browse-->
+				<ul data-role="listview">
+					<li data-role="list-divider">About Check Book</li>
+					<li><a href="#aboutCompany">About Our Company
+					</a></li>
+				    <li><a href="#aboutApp">About this App
+					</a></li>
+				    <li><a href="#contactUs">Contact Us
+					</a></li>
+		    		<li data-role="list-divider">Other Apps</li>
+			        <li><a href="http://itunes.apple.com/us/genre/ios/id36?mt=8">Apple Apps
+					</a></li>
+			        <li><a href="http://play.google.com/">Android Apps
+					</a></li>
+					<li data-role="list-divider">Links</li>
+					<li><a href="#staff">Staff
+					</a></li>
+				    <li><a href="#addTransaction">Transaction
+					</a></li>
+				    <li><a href="http://www.youtube.com/">Videos
+					</a></li>
+			    </ul>
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h4>&copy; Zak Crosser</h4>
+		</div>
+	</div>	
+	
+<!-- New Page Start 
+	Add Transaction page -->
+	<div data-role="page" id="addTransaction" data-add-back-btn="true" data-id="pgs">
+		<!-- header -->
+		<div data-role="header" date-position="fixed" data-theme="b">
+			<h1>Add Transaction</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#addTransaction" data-icon="plus" class="ui-btn-active">Add New</a></li>
+					<li><a href="/app_b.html" data-icon="arrow-r">View B</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<!-- content -->
+		<div data-role="content">
+			<form action="#" method="post" id="form" data-role="none">
+				<fieldset>
+					<legend><strong>Transaction Info</strong></legend>
+						<ul id="errors" data-role="listview"></ul>
+							<ul>
+								<li>Date Added:
+									<ul>
+										<li><label for="date"></label><input type="date" id="date" placeholder="MM/DD/YY" /></li>
+									</ul>
+								</li>
+								
+								<fieldset data-role="controlgroup">
+									<ul>
+										<li>Type:</li>
+									</ul>	
+									<input type="radio" checked value="Deposit" id="Deposit" name="types" /><label for="Deposit">Deposit</label>
+									<input type="radio" value="Withdraw" id="Withdraw" name="types" /><label for="Withdraw">Withdraw</label>
+									<input type="radio" value="Adjustment" id="Adjustment" name="types" /><label for="Adjustment">Adjustment</label>
+									<input type="radio" value="Transfer" id="Transfer" name="types" /><label for="Transfer">Transfer</label>
+								</fieldset>
+									<ul>
+									<li>Amount:<input type="text" id="amount" placeholder="$0.00"/></li>
+									</ul>
+								</li>	
+								<li>
+									<label for="Catagory" id="category">Category</label>	
+								</li>
+								<label><input type="checkbox" value="Yes" id="recurring" />Recurring Transaction?</label>	
+								<li><label for="notes">Notes:</label><textarea id="notes"></textarea></li>		
+								<li><input type="hidden" value="true" id="hidded"/> </li>
+							</ul>
+					<!-- Save Transaction Button -->
+					<input type="submit" value="Save Transaction" id="submit" data-role="button" data-theme="a"/>
+				</fieldset>
+			</form>
+			<!--Search Bar -->
+			<label for="search-basic">Search Transactions:</label>
+			<input type="search" name="search" id="searc-basic" value="" />
+			<!-- delete data button -->
+			<a href="#" id="clearData" data-role="button" data-inline="ture" data-mini="true" data-theme="b" data-icon="delete" data-iconpos="right">Delete Data</a>
+			<!-- display data button -->
+			<a href="#" id="showInfo" data-role="button" data-inline="ture" data-mini="true" data-theme="b" data-icon="arrow-r" data-iconpos="right">Display Data</a>
+			<!-- add additional item button -->
+			<a href="#addTransaction" id="addNew" style="display:none;" data-role="button" data-theme="b" data-icon="arrow-r" data-iconpos="plus">Add Another Transaction</a>
+			<ul id='storedTransactions'></ul>
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h4>&copy; Zak Crosser</h4>
+		</div>	
+	</div>
+	
+<!-- about company page -->
+	<div data-role="page" id="aboutCompany" data-add-back-btn="true">
+		<!-- Header tag -->		
+		<div data-role="header" date-position="fixed" data-theme="b" data-id="pgs">
+			<h1>Check Book</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
+					<li><a href="#addTransaction" data-icon="plus">Add New</a></li>
+					<li><a href="/app_b.html" data-icon="arrow-r">View B</a></li>
+				</ul>
+			</div>							
+		</div>	
+		<!-- content container -->
+		<div data-role="content">
+			<p>Coming Soon!</p>
+		</div>	
+		<!-- Footer -->
+		<div data-role="footer" data-position="fixed" data-theme="b">
+				<h4>&copy; Zak Crosser</h4>
+		</div>	
+	</div>
+
+<!-- about app page -->	
+	<div data-role="page" id="aboutApp" data-add-back-btn="true">
+		<!-- Header tag -->		
+		<div data-role="header" date-position="fixed" data-theme="b" data-id="pgs">
+			<h1>Check Book</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
+					<li><a href="#addTransaction" data-icon="plus">Add New</a></li>
+					<li><a href="/app_b.html" data-icon="arrow-r">View B</a></li>
+				</ul>
+			</div>							
+		</div>	
+		<!-- content container -->
+		<div data-role="content">
+			<p>Check Book is an app help to keep organization of your day to day transactions. </p>
+		</div>	
+		<!-- Footer -->
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h4>&copy; Zak Crosser</h4>
+		</div>	
+	</div>
+		
+<!-- contact page -->
+	<div data-role="page" id="contactUs" data-add-back-btn="true">
+		<!-- Header tag -->		
+		<div data-role="header" date-position="fixed" data-theme="b" data-id="pgs">
+			<h1>Check Book</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
+					<li><a href="#addTransaction" data-icon="plus">Add New</a></li>
+					<li><a href="/app_b.html" data-icon="arrow-r">View B</a></li>
+				</ul>
+			</div>							
+		</div>	
+		<!-- content container -->
+		<div data-role="content">
+			<p>Coming Soon!</p>
+		</div>	
+		<!-- Footer -->
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h4>&copy; Zak Crosser</h4>
+		</div>	
+	</div>
+
+<!-- staff page -->
+	<div data-role="page" id="staff" data-add-back-btn="true">
+		<!-- Header tag -->		
+		<div data-role="header" date-position="fixed" data-theme="b" data-id="pgs">
+			<h1>Check Book</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
+					<li><a href="#addTransaction" data-icon="plus">Add New</a></li>
+					<li><a href="/app_b.html" data-icon="arrow-r">View B</a></li>
+				</ul>
+			</div>							
+		</div>	
+		<!-- content container -->
+		<div data-role="content">
+		
+			<div data-role="collapsible-set">
+				<div data-role="collapsible" data-collapsed="true" data-theme="b">
+					<img src="img/me.jpeg" alt="Zak Crosser" height="200" width="150" />
+					<h3>Zak Crosser</h3>
+					<p>Owner/Creator</p>
+				</div>
+			
+				<div data-role="collapsible" data-collapsed="true" data-theme="b">
+					<img src="img/jim.jpeg" alt="Jim Crosser" height="200" width="150" />
+					<h3>Jim Crosser</h3>
+					<p>Producer/Funds/Father</p>
+				</div>
+		
+				<div data-role="collapsible" data-collapsed="true" data-theme="b">
+					<img src="img/ian.jpeg" alt="Ian Crosser" height="200" width="150" />
+					<h3>Ian Crosser</h3>
+					<p>Insight/Brother</p>
+				</div>
+			</div>	
+		</div>	
+		
+		<!-- Footer -->
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h4>&copy; Zak Crosser</h4>
+		</div>	
+	</div>			
+
+				
+</body>
+</html>
