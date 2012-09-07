@@ -1,0 +1,76 @@
+﻿@charset "UTF-8";
+/*
+ * Example of Twitter Ticker Styling
+ *
+ * Version: 1.1.1
+ * (c) Copyright 2011-2012, Zazar Ltd
+ *
+ */
+
+body {
+	margin: 1em 3em;
+	font-family: Tahoma, Genevam, sans-serif;
+}
+
+.twitterFeed
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+	width: 400px;
+	margin-bottom: 2em;
+}
+.twitterFeed a
+{
+	color: #444;
+	text-decoration: none;
+}
+.twitterFeed a:hover
+{
+	color: #000;
+	text-decoration: underline;
+}
+.twitterFeed a img { border: none; }
+.twitterFeed img
+{
+	float: left;
+	margin: 0 1em 1em 0;
+}
+
+.twitterHeader { padding: 0.2em 0; }
+.twitterHeader span
+{
+	font-weight: bold;
+	font-size: 2.2em;
+}
+
+.twitterBody
+{
+	clear: left;
+	border: 4px solid #666;
+}
+.twitterRow p a { text-decoration: underline; }
+.twitterRow p a:hover { text-decoration: none; }
+.twitterRow img, .twitterRow h4, .twitterRow div
+{
+	margin: 0;
+	padding: 0.5em;
+}
+.twitterRow p { margin-left: 70px; padding-bottom: 0.5em; }
+
+.tweetName a, .tweetTime
+{
+	font-weight: bold;
+	color: #444;
+}
+.tweetName
+{
+	float: left;
+	font-size: 1.2em;
+}
+.tweetTime { text-align: right; }
+
+#ticker1 .odd { background-color: #e8e8fc; }
+#ticker1 .even { background-color: #d4d4e8; }
+
+#ticker2 .odd { background-color: #e8fce8; }
+#ticker2 .even { background-color: #d4e8d4; }
