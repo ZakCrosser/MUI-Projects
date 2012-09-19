@@ -2,16 +2,82 @@
 
 CSS
 Zak Crosser
-VFW Term:1208
-
-Requirements 12 properties and 8 HTML tags
+MiU Term:1209
 
 */
+#home{
+  background-image: url('../img/background.jpeg');
+  background-repeat:repeat-y;
+  background-position:center center; 
+  background-attachment:scroll;
+  background-size:100% 100%;
+}
 
+#addTransaction{
+  background-image: url('../img/background.jpeg');
+  background-repeat:repeat-y;
+  background-position:center center; 
+  background-attachment:scroll;
+  background-size:100% 100%;
+}
 
-body {
-  background-image: url(../img/background.jpeg);
-  }
+#aboutCompany{
+  background-image: url('../img/background.jpeg');
+  background-repeat:repeat-y;
+  background-position:center center; 
+  background-attachment:scroll;
+  background-size:100% 100%;
+}
+
+#aboutApp{
+  background-image: url('../img/background.jpeg');
+  background-repeat:repeat-y;
+  background-position:center center; 
+  background-attachment:scroll;
+  background-size:100% 100%;
+}
+
+#contactUs{
+  background-image: url('../img/background.jpeg');
+  background-repeat:repeat-y;
+  background-position:center center; 
+  background-attachment:scroll;
+  background-size:100% 100%;
+}
+
+#staff{
+  background-image: url('../img/background.jpeg');
+  background-repeat:repeat-y;
+  background-position:center center; 
+  background-attachment:scroll;
+  background-size:100% 100%;
+}
+
+#order{
+  background-image: url('../img/background.jpeg');
+  background-repeat:repeat-y;
+  background-position:center center; 
+  background-attachment:scroll;
+  background-size:100% 100%;
+}
+
+.ui-input-text{
+  font-family: Helvetica, Arial, sans-serif; 
+  text-align: center;
+  color: white;
+}
+
+.ui-controlgroup-label{
+  font-family: Helvetica, Arial, sans-serif; 
+  text-align: center;
+  color: white;
+}
+
+label{
+  font-family: Helvetica, Arial, sans-serif; 
+  text-align: center;
+  color: white;
+}
 
 .inline{
   display:inline;
@@ -30,6 +96,13 @@ h1 {
 h2 {
   font-family: Helvetica, Arial, sans-serif; 
   text-align: center;
+  color: white;
+  
+}
+
+h3 {
+  font-family: Helvetica, Arial, sans-serif; 
+  text-align: center;
   color: #FF8000;
   
 }
@@ -37,7 +110,7 @@ h2 {
 p{
   font-family: Helvetica, Arial, sans-serif; 
   font-weight:bold;
-  color: #FF8000;
+  color: white;
   text-align: center;
 
 }
@@ -86,7 +159,7 @@ p{
 }
 
 legend {
-  color: #0B0B61;
+  color: #CEF6F5;
   font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -105,13 +178,17 @@ fieldset ul{
 }
 
 li{
-  color: #0B0B61; 
+  color: #CEF6F5; 
   font-family: Helvetica, Arial, sans-serif;  
   list-style: none;
 }
 
 a:hover {
   text-decoration: none;
+}
+
+a{
+  color: #CEF6F5;
 }
 
 input[type="submit"] { 
@@ -144,6 +221,27 @@ input[type="submit"] {
 
 #transerrorslink{
   display:none;
+}
+
+.ui-body-c, .ui-overlay-c {
+    text-shadow: none;
+}
+
+.ui-body-c .ui-link {
+    color: white;
+}
+
+.odd {
+    background-color: gray;
+}
+
+.even {
+    background-color: gray;
+}
+
+.twitterFeed a {
+    color: white;
+    font-weight: bold;
 }
 
 

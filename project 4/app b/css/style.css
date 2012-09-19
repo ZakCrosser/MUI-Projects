@@ -2,13 +2,36 @@
 
 CSS
 Zak Crosser
-VFW Term:1208
-
-Requirements 12 properties and 8 HTML tags
+MiU Term:1209
 
 */
 
 
+.ui-input-text{
+  font-family: Helvetica, Arial, sans-serif; 
+  text-align: center;
+  color: white;
+}
+
+.ui-controlgroup-label{
+  font-family: Helvetica, Arial, sans-serif; 
+  text-align: center;
+  color: white;
+}
+
+label{
+  font-family: Helvetica, Arial, sans-serif; 
+  text-align: center;
+
+}
+
+.inline{
+  display:inline;
+}
+
+label.error{
+  display:block; margin:10px; color:red;
+  }
 
 h1 { 
   font-family: Helvetica, Arial, sans-serif; 
@@ -19,6 +42,13 @@ h1 {
 h2 {
   font-family: Helvetica, Arial, sans-serif; 
   text-align: center;
+  color: white;
+  
+}
+
+h3 {
+  font-family: Helvetica, Arial, sans-serif; 
+  text-align: center;
   color: #FF8000;
   
 }
@@ -26,9 +56,9 @@ h2 {
 p{
   font-family: Helvetica, Arial, sans-serif; 
   font-weight:bold;
-  color: #FF8000;
+  color: #2E9AFE;
   text-align: center;
-  color: #0B0B61;
+
 }
 
 #cta {
@@ -75,8 +105,10 @@ p{
 }
 
 legend {
-  color: #0B0B61;
+  color: #CEF6F5;
   font-family: Helvetica, Arial, sans-serif;
+}
+
 }
 
 ul {
@@ -92,13 +124,17 @@ fieldset ul{
 }
 
 li{
-  color: #0B0B61; 
+  color: #CEF6F5; 
   font-family: Helvetica, Arial, sans-serif;  
   list-style: none;
 }
 
 a:hover {
   text-decoration: none;
+}
+
+a{
+  color: #CEF6F5;
 }
 
 input[type="submit"] { 
@@ -128,6 +164,42 @@ input[type="submit"] {
   background-image: url(../img/ATM_Withdraw.png);
   background-repeat: no-repeat;
 }
+
+#transerrorslink{
+  display:none;
+}
+
+.ui-body-c, .ui-overlay-c {
+    text-shadow: none;
+}
+
+
+
+.odd {
+    background-color: gray;
+}
+
+.even {
+    background-color: gray;
+}
+
+.twitterFeed a {
+    color: white;
+    font-weight: bold;
+}
+
+.ui-btn-up-a {
+    color: #2E9AFE;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.ui-bar-a {
+    color: #2E9AFE;
+    font-weight: bold;
+    text-shadow: 0 -1px 1px #000000;
+}        
+
 
 
 
