@@ -9,7 +9,7 @@ $('#home').on('pageinit', function(){
 		
 $('#addItem').on('pageinit', function(){
 
-		var myForm = $('#transform');
+		var myForm = $('#formId');
 		    myForm.validate({
 			invalidHandler: function(form, validator) {
 			},
@@ -19,12 +19,32 @@ $('#addItem').on('pageinit', function(){
 		}
 	});
 	
+	//any other code needed for addItem page goes here
+	
+});
+
+//The functions below can go inside or outside the pageinit function for the page in which it is needed.
+window.addEventListener("DOMContentLoaded", function(){
   
   function r(x){
     var theElement = document.getElementById(x);
     return theElement;
   }
   
+  // var makeDropMenu = function(){
+  //   var formTag = document.getElementsByTagName("form"),
+  //       selectLi = $('category'),
+  //       makeSelect = document.createElement('select');
+  //       makeSelect.setAttribute("id", "groups");
+  //   for(var i=0, j=catagory.length; i<j; i++){
+  //     var makeOption = document.createElement('option');
+  //     var optText = catagory[i];
+  //     makeOption.setAttribute("value", optText);
+  //     makeOption.innerHTML = optText;
+  //     makeSelect.appendChild(makeOption);
+  //   }
+  //   selectLi.appendChild(makeSelect);
+  // }
   
   var getRadioType = function(){
     var radios = document.forms[0].types;
@@ -37,12 +57,30 @@ $('#addItem').on('pageinit', function(){
   
   var getCheckBoxStatus = function(){
     if(r('recurring').checked){
-      checkBoxValue = $('recurring').value;
+      checkBoxValue = r('recurring').value;
     }else{
       checkBoxValue = "No";
     }
   }
   
+  var controls = function(n){
+    switch(n){
+      case "on":
+        $('#transform').hide();
+        $('#clearData').addClass("inline");
+        $('#showInfo').hide();
+        $('#addNew').addClass("inline");
+        break;
+      case "off":
+       $('#transform').show();
+       $('#clearData').addClass("inline");
+       $('#showInfo').addClass("inline");
+       $('#addNew').hide();
+       $("#data").hide();
+      default:
+        return false;
+    }
+  }
   
   var storeTransaction = function(key){
     if(!key){
@@ -57,6 +95,7 @@ $('#addItem').on('pageinit', function(){
         item.transType  =["Type", typeValue];
         item.catagory   =["Catagory", r('groups').value];
         item.amount     =["Amount", r('amount').value];
+        item.slider     =["Slider", r('slider').value];
         item.checkBox   =["Is it a reccuring transaction:", checkBoxValue];
         item.notes      =["Notes", r('notes').value];
     localStorage.setItem(id, JSON.stringify(item));
@@ -64,19 +103,20 @@ $('#addItem').on('pageinit', function(){
     return item
   }
   
-  var showData = function(data){
+  var showData = function(catagory){
+    controls("on");
     if(localStorage.length === 0){
       alert("There is no data in Local Storage, static data function added!")
      autoFillData();
      showData();
     } else {
       var makeDiv = document.createElement("div");
-      makeDiv.setAttribute("id", "data");
+      makeDiv.setAttribute("id", "transactions");
       var makeList = r('storedTransactions');
       makeList.innerHTML = "";
       makeDiv.appendChild(makeList);
       document.body.appendChild(makeDiv);
-      r("data").style.display ="block"
+      r("transactions").style.display ="block"
       for(var i=0, len=localStorage.length; i<len; i++){
         var makeLi = document.createElement('li');
         var linksLi = document.createElement('li');
@@ -86,7 +126,7 @@ $('#addItem').on('pageinit', function(){
         var obj = JSON.parse(value);
         var makeSubList = document.createElement('ul');
         makeLi.appendChild(makeSubList);
-        makeLi.setAttribute('class', 'transaction ' + obj.catagory[1]);
+        makeLi.setAttribute('class', 'transaction ' + obj.catagory[0]);
         for(var s in obj){
           var makeSubLi = document.createElement('li');
           makeSubList.appendChild(makeSubLi);
@@ -128,6 +168,7 @@ $('#addItem').on('pageinit', function(){
     var value = localStorage.getItem(key);
     var item = JSON.parse(value);
     var submit = r('submit');
+    controls("off");
     r('date').value = item.date[1];
     var radios = document.forms[0].types;
     for(var i=0; i<radios.length; i++){
@@ -146,6 +187,7 @@ $('#addItem').on('pageinit', function(){
     }
     r('groups').value = item.catagory[1];
     r('amount').value = item.amount[1];
+    r('slider').value = item.slider[1];
     r('notes').value = item.notes[1];
     
     submit.value = "Edit Transaction";
@@ -175,17 +217,74 @@ $('#addItem').on('pageinit', function(){
       return false;
     }
   }
+  
+  var validate = function(evt){
+    console.log(r('submit').key);
+    var getDate      =r('date');
+    var getCatagory  =r('groups');
+    var getAmount    =r('amount');
+    var getNotes     =r('notes');
     
-  var typeValue,sss
+    //errMsg.innerHTML = "";
+    getCatagory.setAttribute("class", "");
+    getDate.setAttribute("class", "");
+    getAmount.setAttribute("class", "");
+    getNotes.setAttribute("class", "");
+    
+  
+    
+    var messageAry = [];
+    
+    if(getCatagory.value === "--Choose a Catagory--"){
+      var catagoryError = "Please Pick a Catagory";
+      getCatagory.setAttribute("class", "errors");
+      messageAry.push(catagoryError); 
+    }
+    if(getDate.value === ""){
+      var dateError = "Please Enter A Date";
+      getDate.setAttribute("class", "errors");
+      messageAry.push(dateError);
+    }
+    if(!(new RegExp("^[0-9\.]+$", "i")).test(getAmount.value)){
+      var amountError = "Please Enter A Amount";
+      getAmount.setAttribute("class", "errors");
+      messageAry.push(amountError);
+    }
+    if(getNotes.value === ""){
+      var notesError = "Please Enter Notes";
+      getNotes.setAttribute("class", "errors");
+      messageAry.push(notesError);
+    }
+    if(messageAry.length >= 1){
+      for(var i=0, j=messageAry.length; i < j; i++){
+        var txt = document.createElement('li');
+        txt.innerHTML = messageAry[i];
+        //errMsg.appendChild(txt);
+      }
+      evt.preventDefault();
+      return false;
+    }else{
+      return storeTransaction(r('submit').key);
+    }
+  }
+ 
+ 
+    
+  var catagory = ["--Choose a Catagory--", "Food", "Credit_Card", "Entertainment", "ATM_Withdraw"],
+      typeValue,sss
       checkBoxValue = "No"
       errMsg = r('errors');
       ;
+  // makeDropMenu();
 
   document.getElementById('showInfo').onclick = (function(evt) {showData(evt);});
   document.getElementById('clearData').onclick = (function(evt) {clearData(evt);});
-  //document.getElementById('submit').onclick = (function(evt) {validate(evt);});
+  document.getElementById('submit').onclick = (function(evt) {validate(evt);});
   
   
-
-
+  
 });
+
+  
+  
+  
