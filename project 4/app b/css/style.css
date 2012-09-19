@@ -6,6 +6,9 @@ MiU Term:1209
 
 */
 
+body{
+  background-color:#A4A4A4;
+}
 
 .ui-input-text{
   font-family: Helvetica, Arial, sans-serif; 
@@ -36,13 +39,14 @@ label.error{
 h1 { 
   font-family: Helvetica, Arial, sans-serif; 
   text-align: center;
+  color: #0B0B61;
   
 }
 
 h2 {
   font-family: Helvetica, Arial, sans-serif; 
   text-align: center;
-  color: white;
+  color: #FF8000;
   
 }
 
@@ -56,9 +60,9 @@ h3 {
 p{
   font-family: Helvetica, Arial, sans-serif; 
   font-weight:bold;
-  color: #2E9AFE;
+  color: #FF8000;
   text-align: center;
-
+  color: #0B0B61;
 }
 
 #cta {
@@ -105,7 +109,7 @@ p{
 }
 
 legend {
-  color: #CEF6F5;
+  color: #0B0B61;
   font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -121,20 +125,17 @@ ul li ul {
 
 fieldset ul{
   padding: 5px;
+  background-color:#D8D8D8;
 }
 
 li{
-  color: #CEF6F5; 
+  color: #0B0B61; 
   font-family: Helvetica, Arial, sans-serif;  
   list-style: none;
 }
 
 a:hover {
   text-decoration: none;
-}
-
-a{
-  color: #CEF6F5;
 }
 
 input[type="submit"] { 

@@ -1,19 +1,16 @@
-//Project 2
-//MiU Term 1209
-//Zachary Crosser
 //Project 3
 //VFW Term 1208
 //Zachary Crosser
 window.addEventListener("DOMContentLoaded", function(){
   
-  function r(x){
+  function $(x){
     var theElement = document.getElementById(x);
     return theElement;
   }
   
   var makeDropMenu = function(){
     var formTag = document.getElementsByTagName("form"),
-        selectLi = r('category'),
+        selectLi = $('category'),
         makeSelect = document.createElement('select');
         makeSelect.setAttribute("id", "groups");
     for(var i=0, j=catagory.length; i<j; i++){
@@ -36,7 +33,7 @@ window.addEventListener("DOMContentLoaded", function(){
   }
   
   var getCheckBoxStatus = function(){
-    if(r('recurring').checked){
+    if($('recurring').checked){
       checkBoxValue = $('recurring').value;
     }else{
       checkBoxValue = "No";
@@ -46,17 +43,17 @@ window.addEventListener("DOMContentLoaded", function(){
   var controls = function(n){
     switch(n){
       case "on":
-        r('form').style.display = "none";
-        r('clearData').style.display ="inline";
-        r('showInfo').style.display ="none";
-        r('addNew').style.display ="inline";
+        $('form').style.display = "none";
+        $('clearData').style.display ="inline";
+        $('showInfo').style.display ="none";
+        $('addNew').style.display ="inline";
         break;
       case "off":
-        r('form').style.display = "block";
-        r('clearData').style.display ="inline";
-        r('showInfo').style.display ="inline";
-        r('addNew').style.display ="none";
-        r("data").style.display ="none";
+        $('form').style.display = "block";
+        $('clearData').style.display ="inline";
+        $('showInfo').style.display ="inline";
+        $('addNew').style.display ="none";
+        $("data").style.display ="none";
       default:
         return false;
     }
@@ -71,12 +68,13 @@ window.addEventListener("DOMContentLoaded", function(){
     getRadioType();
     getCheckBoxStatus();
     var item            = {};
-        item.date       =["Date", r('date').value];
+        item.date       =["Date", $('date').value];
         item.transType  =["Type", typeValue];
-        item.catagory   =["Catagory", r('groups').value];
-        item.amount     =["Amount", r('amount').value];
+        item.catagory   =["Catagory", $('groups').value];
+        item.amount     =["Amount", $('amount').value];
+        item.slider     =["Slider", $('slider').value];
         item.checkBox   =["Is it a reccuring transaction:", checkBoxValue];
-        item.notes      =["Notes", r('notes').value];
+        item.notes      =["Notes", $('notes').value];
     localStorage.setItem(id, JSON.stringify(item));
     alert("Transaction Saved!");
     return item
@@ -91,11 +89,11 @@ window.addEventListener("DOMContentLoaded", function(){
     } else {
       var makeDiv = document.createElement("div");
       makeDiv.setAttribute("id", "data");
-      var makeList = r('storedTransactions');
+      var makeList = $('storedTransactions');
       makeList.innerHTML = "";
       makeDiv.appendChild(makeList);
       document.body.appendChild(makeDiv);
-      r("data").style.display ="block"
+      $("data").style.display ="block"
       for(var i=0, len=localStorage.length; i<len; i++){
         var makeLi = document.createElement('li');
         var linksLi = document.createElement('li');
@@ -105,7 +103,7 @@ window.addEventListener("DOMContentLoaded", function(){
         var obj = JSON.parse(value);
         var makeSubList = document.createElement('ul');
         makeLi.appendChild(makeSubList);
-        //makeLi.setAttribute('class', 'transaction ' + obj.catagory[1]);
+        makeLi.setAttribute('class', 'transaction ' + obj.catagory[1]);
         for(var s in obj){
           var makeSubLi = document.createElement('li');
           makeSubList.appendChild(makeSubLi);
@@ -146,9 +144,9 @@ window.addEventListener("DOMContentLoaded", function(){
   var editItem = function(key){
     var value = localStorage.getItem(key);
     var item = JSON.parse(value);
-    var submit = r('submit');
+    var submit = $('submit');
     controls("off");
-    r('date').value = item.date[1];
+    $('date').value = item.date[1];
     var radios = document.forms[0].types;
     for(var i=0; i<radios.length; i++){
       if(radios[i].value == "Deposit" && item.transType[1] == "Deposit"){
@@ -162,11 +160,12 @@ window.addEventListener("DOMContentLoaded", function(){
       }  
     }
     if(item.checkBox[1] == "Yes"){
-      r('recurring').setAttribute("checked", "checked");
+      $('recurring').setAttribute("checked", "checked");
     }
-    r('groups').value = item.catagory[1];
-    r('amount').value = item.amount[1];
-    r('notes').value = item.notes[1];
+    $('groups').value = item.catagory[1];
+    $('amount').value = item.amount[1];
+    $('slider').value = item.slider[1];
+    $('notes').value = item.notes[1];
     
     submit.value = "Edit Transaction";
     submit.key = key;
@@ -197,11 +196,11 @@ window.addEventListener("DOMContentLoaded", function(){
   }
   
   var validate = function(evt){
-    console.log(r('submit').key);
-    var getDate      =r('date');
-    var getCatagory  =r('groups');
-    var getAmount    =r('amount');
-    var getNotes     =r('notes');
+    console.log($('submit').key);
+    var getDate      =$('date');
+    var getCatagory  =$('groups');
+    var getAmount    =$('amount');
+    var getNotes     =$('notes');
     
     errMsg.innerHTML = "";
     getCatagory.setAttribute("class", "");
@@ -251,7 +250,7 @@ window.addEventListener("DOMContentLoaded", function(){
   var catagory = ["--Choose a Catagory--", "Food", "Credit_Card", "Entertainment", "ATM_Withdraw"],
       typeValue,sss
       checkBoxValue = "No"
-      errMsg = r('errors');
+      errMsg = $('errors');
       ;
   makeDropMenu();
 
